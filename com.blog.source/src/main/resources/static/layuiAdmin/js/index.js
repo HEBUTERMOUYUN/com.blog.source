@@ -145,10 +145,12 @@ function donation(){
 		area : ['260px', '367px'],
 		tab : [{
 			title : "微信",
-			content : "<div style='padding:30px;overflow:hidden;background:#d2d0d0;'><img src='images/wechat.jpg'></div>"
+			content : "<!DOCTYPE HTML>\n" +
+                "<html xmlns:th=\"http://www.thymeleaf.org\"><div style='padding:30px;overflow:hidden;background:#d2d0d0;'><img th:src='@{images/wechat.jpg}' src='images/wechat.jpg'></div>"
 		},{
 			title : "支付宝",
-			content : "<div style='padding:30px;overflow:hidden;background:#d2d0d0;'><img src='images/alipay.jpg'></div>"
+			content : "<!DOCTYPE HTML>\n" +
+                "<html xmlns:th=\"http://www.thymeleaf.org\"><div style='padding:30px;overflow:hidden;background:#d2d0d0;'><img th:src='@{images/alipay.jpg}' src='images/alipay.jpg'></div>"
 		}]
 	})
 }
