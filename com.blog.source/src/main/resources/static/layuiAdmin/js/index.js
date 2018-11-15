@@ -100,6 +100,69 @@ layui.config({
 		showNotice();
 	})
 
+	//隐藏与显示左侧导航栏
+    $('#hide-left').on('click', function () {
+        var sideWidth = $('#left-navbar').width();
+        if (sideWidth === 200) {
+            $('#right-content').animate({
+                left: '0'
+            }); //admin-footer
+            $('#right-footer').animate({
+                left: '0'
+            });
+            $('#left-navbar').animate({
+                width: '0'
+            });
+
+            $('#hide-left').html("<a id=\"hide-left-b\" href=\"javascript:;\" style=\"color: white\"><i class=\"layui-icon\" >&#xe608;</i> <cite >显示</cite></a>");
+        }
+        else {
+            $('#right-content').animate({
+                left: '200px'
+            });
+            $('#right-footer').animate({
+                left: '200px'
+            });
+            $('#left-navbar').animate({
+                width: '200px'
+            });
+
+            $('#hide-left').html("<a id=\"hide-left-a\" href=\"javascript:;\" style=\"color: white\"><i class=\"layui-icon\" >&#xe60f;</i><cite >隐藏</cite></a>");
+        }
+    });
+
+	//全屏
+    $('#full-screen').on('click', function () {
+        var docElm = document.documentElement;
+        //W3C
+        if (docElm.requestFullscreen) {
+            docElm.requestFullscreen();
+        }
+        //FireFox
+        else if (docElm.mozRequestFullScreen) {
+            docElm.mozRequestFullScreen();
+        }
+        //Chrome等
+        else if (docElm.webkitRequestFullScreen) {
+            docElm.webkitRequestFullScreen();
+        }
+        //IE11
+        else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        }
+        //layer.msg('按Esc即可退出全屏');
+    });
+
+    //关闭按钮 ==手机
+	$("#close-window").on('click',function () {
+        window.close();
+    });
+
+	//退出按钮  ==pc
+	$("#sign-out").on('click',function () {
+        window.close();
+    });
+
 	//刷新后还原打开的窗口
 	if(window.sessionStorage.getItem("menu") != null){
 		menu = JSON.parse(window.sessionStorage.getItem("menu"));
@@ -139,18 +202,18 @@ function addTab(_this){
 	tab.tabAdd(_this);
 }
 
-//捐赠弹窗
+//赞助弹窗
 function donation(){
 	layer.tab({
-		area : ['260px', '367px'],
+		area : ['270px', '402px'],
 		tab : [{
 			title : "微信",
 			content : "<!DOCTYPE HTML>\n" +
-                "<html xmlns:th=\"http://www.thymeleaf.org\"><div style='padding:30px;overflow:hidden;background:#d2d0d0;'><img th:src='@{images/wechat.jpg}' src='images/wechat.jpg'></div>"
+                "<html xmlns:th=\"http://www.thymeleaf.org\"><div style='overflow:hidden;background:#d2d0d0;'><img th:src='@{images/wechat.jpg}' src='images/wechat.jpg'></div>"
 		},{
 			title : "支付宝",
 			content : "<!DOCTYPE HTML>\n" +
-                "<html xmlns:th=\"http://www.thymeleaf.org\"><div style='padding:30px;overflow:hidden;background:#d2d0d0;'><img th:src='@{images/alipay.jpg}' src='images/alipay.jpg'></div>"
+                "<html xmlns:th=\"http://www.thymeleaf.org\"><div style='overflow:hidden;background:#d2d0d0;'><img th:src='@{images/alipay.jpg}' src='images/alipay.jpg'></div>"
 		}]
 	})
 }
